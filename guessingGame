@@ -1,0 +1,30 @@
+let maxNum=parseInt(prompt('Enter the maximum no'));
+while(!maxNum){
+    maxNum=parseInt(prompt('Invalid number, please enter a maximum number'));
+}
+let targetNum=Math.floor(Math.random()*maxNum)+1;
+let guess=prompt('Enter your first guess.(Type q to quit)');
+while(guess<1 || guess>maxNum){
+    guess=prompt(`Sorry you have to guess within the range of 1 and ${maxNum}`);
+}
+let count=1;
+while(parseInt(guess)!==targetNum){
+    if(guess==='q') break;
+    guess=parseInt(guess);
+  
+    if(guess<targetNum){
+        guess=prompt("The guess to too low.Enter a new guess");
+        count++;
+    }else if(guess>targetNum){
+        guess=prompt('The guess is too high.Enter a new guess');
+        count++;
+    }else{
+        guess=prompt('Invalid guess.Please enter a valid number');
+    }
+}
+if(guess==='q'){
+    console.log('QUTTING!!!');
+}else{
+console.log('CONGRATS!!!');
+console.log(`You win, it took you ${count} guesses`);
+}
